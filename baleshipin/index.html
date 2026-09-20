@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>芭乐视频app污-沉浸式高清视频内容聚合与播放平台</title>
+    <meta name="description" content="芭乐视频app污提供海量高清视频资源，涵盖娱乐、生活、科技等多个领域。平台致力于为用户提供流畅、安全、舒适的在线观看体验，拥有智能推荐算法与极速播放技术。">
+    <meta name="keywords" content="芭乐视频app污,在线视频,高清影视,视频播放,流媒体服务">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #e91e63;
+            --secondary-color: #f50057;
+            --bg-color: #f5f5f7;
+            --card-bg: #ffffff;
+            --text-main: #1d1d1f;
+            --text-sub: #86868b;
+            --spacing-unit: 8px;
+            --border-radius: 12px;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            outline: none;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 1px 0 rgba(0,0,0,0.05);
+        }
+
+        .header-inner {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-main);
+            position: relative;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--text-sub);
+            color: var(--text-main);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            box-shadow: 0 4px 12px rgba(233, 30, 99, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(233, 30, 99, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 60%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            color: var(--text-main);
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-sub);
+            margin-bottom: 30px;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .stat-item h3 {
+            font-size: 28px;
+            color: var(--primary-color);
+        }
+
+        .stat-item p {
+            font-size: 14px;
+            color: var(--text-sub);
+            margin: 0;
+        }
+
+        /* Main Layout */
+        .container {
+            max-width: var(--container-width);
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            gap: 40px;
+        }
+
+        /* Video Grid */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::before {
+            content: '';
+            display: block;
+            width: 4px;
+            height: 22px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .video-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+        }
+
+        .thumbnail {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            background-color: #eee;
+        }
+
+        .thumbnail img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(0,0,0,0.6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .video-card:hover .play-icon {
+            opacity: 1;
+        }
+
+        .play-icon::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 0;
+            border-left: 12px solid white;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+            margin-left: 4px;
+        }
+
+        .card-content {
+            padding: 16px;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--text-sub);
+        }
+
+        .tag {
+            background-color: #fce4ec;
+            color: var(--primary-color);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        /* Sidebar */
+        aside {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .sidebar-widget {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .widget-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .rank-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
+        .rank-num {
+            width: 20px;
+            height: 20px;
+            background: #eee;
+            color: #666;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 20px;
+            font-size: 12px;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .rank-list li:nth-child(1) .rank-num { background: #ffd700; color: white; }
+        .rank-list li:nth-child(2) .rank-num { background: #c0c0c0; color: white; }
+        .rank-list li:nth-child(3) .rank-num { background: #cd7f32; color: white; }
+
+        .rank-list a {
+            flex: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Features Section */
+        .features {
+            background: white;
+            padding: 60px 20px;
+            margin-top: 40px;
+        }
+
+        .feature-grid {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .feature-icon {
+            width: 64px;
+            height: 64px;
+            background: #fce4ec;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--primary-color);
+        }
+
+        .feature-item h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .feature-item p {
+            font-size: 14px;
+            color: var(--text-sub);
+        }
+
+        /* Footer */
+        footer {
+            background: #1d1d1f;
+            color: #f5f5f7;
+            padding: 60px 20px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-inner {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h2 {
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+
+        .footer-brand p {
+            color: #86868b;
+            font-size: 14px;
+            max-width: 300px;
+        }
+
+        .footer-col h4 {
+            font-size: 14px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #86868b;
+            font-size: 13px;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: #86868b;
+            font-size: 12px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-inner {
+                padding: 0 15px;
+            }
+            
+            nav {
+                display: none; /* Hide nav on mobile for simplicity */
+            }
+
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .footer-inner {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-inner">
+            <a href="#" class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M8 5v14l11-7z"/>
+                </svg>
+                芭乐视频<span>app</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#">热门推荐</a></li>
+                    <li><a href="#">最新更新</a></li>
+                    <li><a href="#">分类浏览</a></li>
+                    <li><a href="#">排行榜</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button class="btn btn-outline">登录</button>
+                <button class="btn btn-primary">下载APP</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>海量高清内容，尽在指尖</h1>
+                <p>芭乐视频app污致力于为您提供最流畅的在线观看体验，支持多终端同步，智能推荐您感兴趣的内容。</p>
+                <div style="display: flex; justify-content: center; gap: 15px;">
+                    <button class="btn btn-primary" style="padding: 12px 30px; font-size: 16px;">立即观看</button>
+                    <button class="btn btn-outline" style="padding: 12px 30px; font-size: 16px;">了解更多</button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <h3>10w+</h3>
+                        <p>视频资源</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>500w+</h3>
+                        <p>月活用户</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>4K</h3>
+                        <p>超清画质</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <section class="content-area">
+                <div class="section-header">
+                    <h2 class="section-title">热门推荐</h2>
+                    <a href="#" style="font-size: 14px; color: var(--primary-color);">查看更多 &rarr;</a>
+                </div>
+
+                <div class="video-grid">
+                    <!-- Video Card 1 -->
+                    <article class="video-card">
+                        <div class="thumbnail">
+                            <img src="https://picsum.photos/seed/video1/400/225" alt="视频封面">
+                            <div class="play-icon"></div>
+                            <span class="tag">独家</span>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">最新热门剧集：都市生活篇</h3>
+                            <div class="card-meta">
+                                <span>2023-10-24</span>
+                                <span>2.3万次播放</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Video Card 2 -->
+                    <article class="video-card">
+                        <div class="thumbnail">
+                            <img src="https://picsum.photos/seed/video2/400/225" alt="视频封面">
+                            <div class="play-icon"></div>
+                            <span class="tag">高清</span>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">探索未知的自然奇观</h3>
+                            <div class="card-meta">
+                                <span>2023-10-23</span>
+                                <span>1.8万次播放</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Video Card 3 -->
+                    <article class="video-card">
+                        <div class="thumbnail">
+                            <img src="https://picsum.photos/seed/video3/400/225" alt="视频封面">
+                            <div class="play-icon"></div>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">科技前沿：未来生活展望</h3>
+                            <div class="card-meta">
+                                <span>2023-10-22</span>
+                                <span>9千次播放</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Video Card 4 -->
+                    <article class="video-card">
+                        <div class="thumbnail">
+                            <img src="https://picsum.photos/seed/video4/400/225" alt="视频封面">
+                            <div class="play-icon"></div>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">美食制作：家常菜谱分享</h3>
+                            <div class="card-meta">
+                                <span>2023-10-21</span>
+                                <span>5千次播放</span>
+                            </div>
+                        </div>
+                    </article>
+                     <!-- Video Card 5 -->
+                     <article class="video-card">
+                        <div class="thumbnail">
+                            <img src="https://picsum.photos/seed/video5/400/225" alt="视频封面">
+                            <div class="play-icon"></div>
+                            <span class="tag">连载</span>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">悬疑推理：迷雾追踪</h3>
+                            <div class="card-meta">
+                                <span>2023-10-20</span>
+                                <span>3.2万次播放</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Video Card 6 -->
+                    <article class="video-card">
+                        <div class="thumbnail">
+                            <img src="https://picsum.photos/seed/video6/400/225" alt="视频封面">
+                            <div class="play-icon"></div>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">旅游攻略：绝美风景线</h3>
+                            <div class="card-meta">
+                                <span>2023-10-19</span>
+                                <span>1.2万次播放</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="section-header" style="margin-top: 40px;">
+                    <h2 class="section-title">最新更新</h2>
+                </div>
+
+                <div style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+                    <ul class="rank-list">
+                        <li><span class="rank-num">1</span><a href="#">周末去哪儿玩：城市周边游推荐</a></li>
+                        <li><span class="rank-num">2</span><a href="#">如何高效管理个人时间？</a></li>
+                        <li><span class="rank-num">3</span><a href="#">数码评测：最新旗舰手机横评</a></li>
+                        <li><span class="rank-num">4</span><a href="#">健身指南：居家锻炼教程</a></li>
+                        <li><span class="rank-num">5</span><a href="#">电影解析：经典台词背后的故事</a></li>
+                        <li><span class="rank-num">6</span><a href="#">理财入门：小白如何开始投资</a></li>
+                    </ul>
+                </div>
+            </section>
+
+            <aside>
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">热门分类</h3>
+                    <ul style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 14px;">
+                        <li><a href="#">娱乐八卦</a></li>
+                        <li><a href="#">影视解说</a></li>
+                        <li><a href="#">游戏竞技</a></li>
+                        <li><a href="#">生活技巧</a></li>
+                        <li><a href="#">科技数码</a></li>
+                        <li><a href="#">汽车知识</a></li>
+                        <li><a href="#">美食烹饪</a></li>
+                        <li><a href="#">教育学习</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">排行榜</h3>
+                    <ul class="rank-list">
+                        <li><span class="rank-num">1</span><a href="#">本周最受欢迎</a></li>
+                        <li><span class="rank-num">2</span><a href="#">点击量最高</a></li>
+                        <li><span class="rank-num">3</span><a href="#">最新上传</a></li>
+                        <li><span class="rank-num">4</span><a href="#">收藏最多</a></li>
+                        <li><span class="rank-num">5</span><a href="#">评论最多</a></li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+
+        <section class="features">
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
+                        </svg>
+                    </div>
+                    <h3>极速播放</h3>
+                    <p>智能服务器调度，毫秒级加载，告别卡顿与等待。</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
+                        </svg>
+                    </div>
+                    <h3>安全可靠</h3>
+                    <p>严格的内容审核机制，绿色健康的观看环境。</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/>
+                        </svg>
+                    </div>
+                    <h3>多端同步</h3>
+                    <p>手机、平板、电脑无缝切换，随时随地想看就看。</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <h2>芭乐视频app污</h2>
+                <p>专注于为用户提供高品质的在线视频娱乐服务，汇聚全网优质资源，打造极致视听体验。</p>
+            </div>
+            <div class="footer-col">
+                <h4>关于我们</h4>
+                <ul>
+                    <li><a href="#">公司简介</a></li>
+                    <li><a href="#">发展历程</a></li>
+                    <li><a href="#">加入我们</a></li>
+                    <li><a href="#">联系方式</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>帮助中心</h4>
+                <ul>
+                    <li><a href="#">常见问题</a></li>
+                    <li><a href="#">意见反馈</a></li>
+                    <li><a href="#">隐私政策</a></li>
+                    <li><a href="#">用户协议</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>关注我们</h4>
+                <ul>
+                    <li><a href="#">微信公众号</a></li>
+                    <li><a href="#">新浪微博</a></li>
+                    <li><a href="#">官方社群</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 芭乐视频app污 版权所有. 本网站内容仅供娱乐参考.
+        </div>
+    </footer>
+
+</body>
+                                              </html>
