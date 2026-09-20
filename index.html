@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="图图的智慧王国数学系列官网，提供小学数学思维训练、趣味解题技巧、学习方法指导及课程资源下载，帮助孩子轻松掌握数学，提升逻辑思维。">
+    <meta name="keywords" content="图图的智慧王国数学系列,小学数学思维训练,数学学习方法,趣味数学,小学奥数,数学课程">
+    <title>图图的智慧王国数学系列-小学数学思维训练与趣味学习平台</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #4A90E2;
+            --secondary-color: #50E3C2;
+            --accent-color: #FF9F43;
+            --text-dark: #2C3E50;
+            --text-light: #7F8C8D;
+            --bg-light: #F9FBFD;
+            --white: #FFFFFF;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --radius: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header & Nav */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--text-dark);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--text-dark);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .btn-subscribe {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .btn-subscribe:hover {
+            background-color: #357ABD;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            background: linear-gradient(135deg, #e0f7fa 0%, #e1bee7 100%);
+            padding: 80px 20px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 40px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(255, 159, 67, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: var(--white);
+            color: var(--text-dark);
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: 2px solid transparent;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--white);
+            background-color: transparent;
+            color: var(--white);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(74, 144, 226, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 30px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Curriculum Section */
+        .curriculum {
+            background-color: var(--white);
+            padding: 80px 20px;
+        }
+
+        .curriculum-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .curriculum-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 10px 25px;
+            border: 1px solid #ddd;
+            background: transparent;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 1rem;
+            color: var(--text-light);
+            transition: all 0.3s;
+        }
+
+        .tab-btn.active {
+            background: var(--primary-color);
+            color: var(--white);
+            border-color: var(--primary-color);
+        }
+
+        .curriculum-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .course-card {
+            border: 1px solid #eee;
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: box-shadow 0.3s;
+            background: #fff;
+        }
+
+        .course-card:hover {
+            box-shadow: var(--shadow);
+        }
+
+        .course-img {
+            height: 160px;
+            background-color: #eee;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .course-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .course-tag {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.6);
+            color: #fff;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        .course-info {
+            padding: 20px;
+        }
+
+        .course-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        .course-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .course-btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            background-color: var(--bg-light);
+            color: var(--primary-color);
+            border-radius: 6px;
+            font-weight: 600;
+        }
+
+        .course-btn:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        /* Methodology Section */
+        .methodology {
+            padding: 80px 20px;
+            background-color: #F0F4F8;
+        }
+
+        .method-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .method-text h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+
+        .method-text p {
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .method-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .check-icon {
+            color: var(--secondary-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .method-visual {
+            background: var(--white);
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .math-icon-large {
+            font-size: 80px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 80px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--white);
+            border-radius: var(--radius);
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fff;
+        }
+
+        .faq-answer {
+            padding: 0 20px 20px;
+            color: var(--text-light);
+            display: none;
+            border-top: 1px solid #f0f0f0;
+            padding-top: 15px;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question {
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2C3E50;
+            color: #ecf0f1;
+            padding: 60px 20px 20px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #bdc3c7;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            color: #95a5a6;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Simplified for mobile */
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .method-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                padding: 0 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                </svg>
+                <span>图图的智慧王国</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#features">课程特色</a>
+                <a href="#curriculum">课程体系</a>
+                <a href="#methodology">学习理念</a>
+                <a href="#faq">常见问题</a>
+            </nav>
+            <a href="#curriculum" class="btn-subscribe">开始学习</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>让数学变得像游戏一样有趣</h1>
+                <p>图图的智慧王国数学系列，专为小学生设计的趣味数学思维训练课程。告别枯燥刷题，通过故事化教学，培养孩子终身受益的逻辑思维能力。</p>
+                <div class="hero-buttons">
+                    <a href="#curriculum" class="btn-primary">探索课程体系</a>
+                    <a href="#methodology" class="btn-secondary">了解学习方法</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features">
+            <div class="section-header">
+                <h2>为什么选择图图智慧王国？</h2>
+                <p>我们不仅教孩子算数，更教他们如何思考。通过独特的教学模式，解决家长辅导难、孩子不爱学的问题。</p>
+            </div>
+            <div class="feature-grid">
+                <article class="feature-card">
+                    <div class="feature-icon">🧠</div>
+                    <h3>思维可视化</h3>
+                    <p>将抽象的数学概念转化为具体的图形和步骤，帮助孩子建立清晰的逻辑思维模型，理解数学本质。</p>
+                </article>
+                <article class="feature-card">
+                    <div class="feature-icon">🎮</div>
+                    <h3>情境化教学</h3>
+                    <p>模拟智慧王国冒险故事，将数学知识融入情节。孩子在解决问题中自然运用数学，激发内在学习动力。</p>
+                </article>
+                <article class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>系统化体系</h3>
+                    <p>从基础运算到奥数思维，分阶段设计课程。每个知识点都有配套练习，确保学习效果层层递进。</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Curriculum Section -->
+        <section id="curriculum" class="curriculum">
+            <div class="curriculum-container">
+                <div class="section-header">
+                    <h2>课程体系概览</h2>
+                    <p>覆盖小学各年级核心知识点，由浅入深，科学规划。</p>
+                </div>
+
+                <div class="curriculum-tabs">
+                    <button class="tab-btn active" onclick="filterCourses('all')">全部课程</button>
+                    <button class="tab-btn" onclick="filterCourses('grade1')">一年级</button>
+                    <button class="tab-btn" onclick="filterCourses('grade2')">二年级</button>
+                    <button class="tab-btn" onclick="filterCourses('grade3')">三年级</button>
+                    <button class="tab-btn" onclick="filterCourses('grade4')">四年级</button>
+                </div>
+
+                <div class="curriculum-grid">
+                    <!-- Course 1 -->
+                    <div class="course-card" data-grade="grade1">
+                        <div class="course-img">
+                            <span class="course-tag">基础入门</span>
+                            <img src="https://picsum.photos/seed/math1/400/250" alt="数字与图形认知">
+                        </div>
+                        <div class="course-info">
+                            <h3>数字王国初探</h3>
+                            <div class="course-meta">
+                                <span>📅 12课时</span>
+                                <span>🎯 适合1年级</span>
+                            </div>
+                            <a href="#" class="course-btn">查看详情</a>
+                        </div>
+                    </div>
+
+                    <!-- Course 2 -->
+                    <div class="course-card" data-grade="grade2">
+                        <div class="course-img">
+                            <span class="course-tag">思维训练</span>
+                            <img src="https://picsum.photos/seed/math2/400/250" alt="加减法巧算">
+                        </div>
+                        <div class="course-info">
+                            <h3>加减法巧算大冒险</h3>
+                            <div class="course-meta">
+                                <span>📅 15课时</span>
+                                <span>🎯 适合2年级</span>
+                            </div>
+                            <a href="#" class="course-btn">查看详情</a>
+                        </div>
+                    </div>
+
+                    <!-- Course 3 -->
+                    <div class="course-card" data-grade="grade3">
+                        <div class="course-img">
+                            <span class="course-tag">应用题突破</span>
+                            <img src="https://picsum.photos/seed/math3/400/250" alt="应用题解题技巧">
+                        </div>
+                        <div class="course-info">
+                            <h3>应用题解题技巧</h3>
+                            <div class="course-meta">
+                                <span>📅 18课时</span>
+                                <span>🎯 适合3年级</span>
+                            </div>
+                            <a href="#" class="course-btn">查看详情</a>
+                        </div>
+                    </div>
+
+                    <!-- Course 4 -->
+                    <div class="course-card" data-grade="grade4">
+                        <div class="course-img">
+                            <span class="course-tag">逻辑推理</span>
+                            <img src="https://picsum.photos/seed/math4/400/250" alt="图形与逻辑">
+                        </div>
+                        <div class="course-info">
+                            <h3>图形与逻辑推理</h3>
+                            <div class="course-meta">
+                                <span>📅 20课时</span>
+                                <span>🎯 适合4年级</span>
+                            </div>
+                            <a href="#" class="course-btn">查看详情</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Methodology Section -->
+        <section id="methodology" class="methodology">
+            <div class="method-container">
+                <div class="method-text">
+                    <h2>三大核心学习法</h2>
+                    <p>图图智慧王国独创的“看、想、练”三步法，确保孩子学得懂、记得住、用得上。</p>
+                    <ul class="method-list">
+                        <li>
+                            <span class="check-icon">✓</span>
+                            <span><strong>看：</strong>通过动画演示，直观理解数学概念，降低认知门槛。</span>
+                        </li>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            <span><strong>想：</strong>引导式提问，锻炼孩子独立思考，培养解题思路。</span>
+                        </li>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            <span><strong>练：</strong>分层级练习题，巩固知识点，举一反三。</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="method-visual">
+                    <span class="math-icon-large">🧩</span>
+                    <h3>拼凑智慧拼图</h3>
+                    <p style="color:var(--text-light); margin-top:10px;">就像拼图一样，数学知识也是由一个个基础碎片组成的。我们的课程帮助孩子找到这些碎片，并拼凑出完整的知识图景。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="faq">
+            <div class="section-header">
+                <h2>家长常见问题</h2>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">这个系列适合多大的孩子？</div>
+                <div class="faq-answer">图图的智慧王国数学系列主要针对小学1-4年级学生。课程内容根据不同年级的数学大纲和思维发展特点设计，由易到难。</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">如何报名或获取学习资料？</div>
+                <div class="faq-answer">您可以点击页面上的“开始学习”按钮查看课程目录，或联系在线客服获取试听课程链接及详细的学习计划。</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">课程是录播还是直播？</div>
+                <div class="faq-answer">目前提供高清录播课程，支持反复观看，方便孩子根据自己的节奏学习。部分阶段会有直播互动答疑。</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">如果孩子听不懂怎么办？</div>
+                <div class="faq-answer">课程采用情境化教学，由浅入深。建议先从低年级基础课程开始，同时配合配套练习册进行巩固。</div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>关于我们</h4>
+                <ul>
+                    <li><a href="#">品牌故事</a></li>
+                    <li><a href="#">师资团队</a></li>
+                    <li><a href="#">合作伙伴</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>课程服务</h4>
+                <ul>
+                    <li><a href="#">课程列表</a></li>
+                    <li><a href="#">学习工具</a></li>
+                    <li><a href="#">家长社区</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>帮助支持</h4>
+                <ul>
+                    <li><a href="#">常见问题</a></li>
+                    <li><a href="#">联系客服</a></li>
+                    <li><a href="#">意见反馈</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>关注我们</h4>
+                <ul>
+                    <li><a href="#">微信公众号</a></li>
+                    <li><a href="#">家长交流群</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 图图的智慧王国数学系列 版权所有 | 仅供演示用途</p>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion Logic
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', event => {
+                const parent = item.parentNode;
+                
+                // Close other open items
+                document.querySelectorAll('.faq-item').forEach(child => {
+                    if (child !== parent) {
+                        child.classList.remove('active');
+                    }
+                });
+
+                // Toggle current item
+                parent.classList.toggle('active');
+            });
+        });
+
+        // Simple Tab Filter Logic
+        function filterCourses(category) {
+            // Update buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Filter cards
+            const cards = document.querySelectorAll('.course-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-grade') === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+          </html>
