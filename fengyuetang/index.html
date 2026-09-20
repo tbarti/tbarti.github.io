@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="风月堂是一个专注于古风言情、唯美古言与历史架空小说的原创文学平台。提供高质量古风小说在线阅读、作者专区、小说分类及最新连载更新服务。">
+    <meta name="keywords" content="风月堂,古风小说,言情小说,在线阅读,古言,架空历史">
+    <title>风月堂-古风言情小说在线阅读与原创文学平台</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #8e44ad;
+            --secondary-color: #d35400;
+            --accent-color: #f1c40f;
+            --bg-color: #fdfbf7;
+            --card-bg: #ffffff;
+            --text-main: #2c3e50;
+            --text-light: #7f8c8d;
+            --border-radius: 8px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header & Nav */
+        header {
+            background: var(--card-bg);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-main);
+            position: relative;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--primary-color);
+        }
+
+        .nav-menu a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -24px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: #f5f5f5;
+            padding: 6px 12px;
+            border-radius: 20px;
+        }
+
+        .search-box input {
+            border: none;
+            background: transparent;
+            outline: none;
+            padding-left: 8px;
+            font-size: 14px;
+            width: 150px;
+        }
+
+        .search-box button {
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            color: var(--text-main);
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .hero-tags {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(142, 68, 173, 0.1);
+            color: var(--primary-color);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .tag:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Layout Grid */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 30px;
+        }
+
+        /* Book Grid */
+        .section-title {
+            font-size: 22px;
+            border-left: 4px solid var(--secondary-color);
+            padding-left: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .more-link {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .more-link:hover {
+            color: var(--primary-color);
+        }
+
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .book-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .book-cover {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            background-color: #eee;
+        }
+
+        .book-info {
+            padding: 15px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .book-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .book-author {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-bottom: 10px;
+        }
+
+        .book-meta {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        .book-tag {
+            background: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .sidebar-widget {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .widget-title {
+            font-size: 18px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .rank-list li {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px dashed #eee;
+        }
+
+        .rank-num {
+            width: 24px;
+            height: 24px;
+            background: var(--text-light);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+
+        .rank-list li:nth-child(1) .rank-num { background: var(--secondary-color); }
+        .rank-list li:nth-child(2) .rank-num { background: var(--accent-color); color: #333; }
+        .rank-list li:nth-child(3) .rank-num { background: #e67e22; }
+
+        .rank-info h4 {
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .rank-info span {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        .ad-placeholder {
+            width: 100%;
+            height: 250px;
+            background: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            border-radius: var(--border-radius);
+            margin-top: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 50px 20px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #bdc3c7;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            font-size: 14px;
+            color: #95a5a6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu { display: none; } /* Simplified for mobile */
+            .container { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 32px; }
+            .book-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 480px) {
+            .book-grid { grid-template-columns: 1fr; }
+            .search-box input { width: 100px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-inner">
+            <a href="#" class="logo">风月堂<span>.</span></a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#">古风言情</a></li>
+                    <li><a href="#">架空历史</a></li>
+                    <li><a href="#">宫斗宅斗</a></li>
+                    <li><a href="#">作者专区</a></li>
+                </ul>
+            </nav>
+            <div class="search-box">
+                <input type="text" placeholder="搜索书名或作者...">
+                <button>&#128269;</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>寻觅一段风月情浓</h1>
+            <p>在风月堂，感受古韵悠长，品味爱恨情仇。精选原创古风小说，为您呈现最纯粹的阅读体验。</p>
+            <div class="hero-tags">
+                <span class="tag">宫廷权谋</span>
+                <span class="tag">江湖侠义</span>
+                <span class="tag">才子佳人</span>
+                <span class="tag">重生穿越</span>
+                <span class="tag">虐恋情深</span>
+            </div>
+        </section>
+
+        <div class="container">
+            <!-- Main Content -->
+            <div class="content-area">
+                <section>
+                    <div class="section-title">
+                        <span>今日更新</span>
+                        <a href="#" class="more-link">查看全部 &raquo;</a>
+                    </div>
+                    <div class="book-grid">
+                        <!-- Book Item 1 -->
+                        <article class="book-card">
+                            <img src="https://picsum.photos/seed/flower/200/280" alt="古风小说封面" class="book-cover">
+                            <div class="book-info">
+                                <h3 class="book-title">海棠依旧醉春风</h3>
+                                <p class="book-author">作者：墨染青衣</p>
+                                <div class="book-meta">
+                                    <span class="book-tag">宫廷</span>
+                                    <span>1.2万人在读</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Book Item 2 -->
+                        <article class="book-card">
+                            <img src="https://picsum.photos/seed/moon/200/280" alt="古风小说封面" class="book-cover">
+                            <div class="book-info">
+                                <h3 class="book-title">月下独酌问苍天</h3>
+                                <p class="book-author">作者：南宫婉儿</p>
+                                <div class="book-meta">
+                                    <span class="book-tag">武侠</span>
+                                    <span>8900人在读</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Book Item 3 -->
+                        <article class="book-card">
+                            <img src="https://picsum.photos/seed/wine/200/280" alt="古风小说封面" class="book-cover">
+                            <div class="book-info">
+                                <h3 class="book-title">一壶浊酒喜相逢</h3>
+                                <p class="book-author">作者：醉卧沙场</p>
+                                <div class="book-meta">
+                                    <span class="book-tag">历史</span>
+                                    <span>2.1万人在读</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Book Item 4 -->
+                        <article class="book-card">
+                            <img src="https://picsum.photos/seed/tea/200/280" alt="古风小说封面" class="book-cover">
+                            <div class="book-info">
+                                <h3 class="book-title">茶香袅袅绕梁间</h3>
+                                <p class="book-author">作者：素手煮茶</p>
+                                <div class="book-meta">
+                                    <span class="book-tag">言情</span>
+                                    <span>5600人在读</span>
+                                </div>
+                            </div>
+                        </article>
+                        
+                         <!-- Book Item 5 -->
+                         <article class="book-card">
+                            <img src="https://picsum.photos/seed/fan/200/280" alt="古风小说封面" class="book-cover">
+                            <div class="book-info">
+                                <h3 class="book-title">扇底藏风起云涌</h3>
+                                <p class="book-author">作者：顾清歌</p>
+                                <div class="book-meta">
+                                    <span class="book-tag">悬疑</span>
+                                    <span>1.5万人在读</span>
+                                </div>
+                            </div>
+                        </article>
+
+                         <!-- Book Item 6 -->
+                         <article class="book-card">
+                            <img src="https://picsum.photos/seed/sword/200/280" alt="古风小说封面" class="book-cover">
+                            <div class="book-info">
+                                <h3 class="book-title">剑指天涯路漫漫</h3>
+                                <p class="book-author">作者：萧十一郎</p>
+                                <div class="book-meta">
+                                    <span class="book-tag">仙侠</span>
+                                    <span>3.2万人在读</span>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+                <section style="margin-top: 50px;">
+                    <div class="section-title">
+                        <span>热门连载</span>
+                        <a href="#" class="more-link">查看全部 &raquo;</a>
+                    </div>
+                    <div class="book-grid">
+                        <!-- Book Item 7 -->
+                        <article class="book-card">
+                            <img src="https://picsum.photos/seed/ink/200/280" alt="古风小说封面" class="book-cover">
+                            <div class="book-info">
+                                <h3 class="book-title">泼墨江山入画来</h3>
+                                <p class="book-author">作者：云深不知处</p>
+                                <div class="book-meta">
+                                    <span class="book-tag">穿越</span>
+                                    <span>4.5万人在读</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Book Item 8 -->
+                        <article class="book-card">
+                            <img src="https://picsum.photos/seed/bridge/200/280" alt="古风小说封面" class="book-cover">
+                            <div class="book-info">
+                                <h3 class="book-title">断桥残雪忆往昔</h3>
+                                <p class="book-author">作者：苏幕遮</p>
+                                <div class="book-meta">
+                                    <span class="book-tag">虐恋</span>
+                                    <span>6.8万人在读</span>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">排行榜</h3>
+                    <ul class="rank-list">
+                        <li>
+                            <div class="rank-num">1</div>
+                            <div class="rank-info">
+                                <h4>盛世妆谋</h4>
+                                <span>142万阅读</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="rank-num">2</div>
+                            <div class="rank-info">
+                                <h4>锦绣未央传</h4>
+                                <span>128万阅读</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="rank-num">3</div>
+                            <div class="rank-info">
+                                <h4>深宫谍影</h4>
+                                <span>98万阅读</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="rank-num">4</div>
+                            <div class="rank-info">
+                                <h4>凤囚凰</h4>
+                                <span>85万阅读</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="rank-num">5</div>
+                            <div class="rank-info">
+                                <h4>步步惊心</h4>
+                                <span>72万阅读</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">阅读指南</h3>
+                    <p style="font-size: 13px; color: #666; margin-bottom: 15px;">
+                        欢迎来到风月堂。请遵守社区规范，文明阅读。如发现违规内容，请及时举报。
+                    </p>
+                    <div class="ad-placeholder">
+                        广告位
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>关于风月堂</h3>
+                <p style="color: #bdc3c7; font-size: 14px; line-height: 1.8;">
+                    风月堂致力于为读者提供最优质的古风言情小说阅读体验。我们汇聚了众多优秀作者，打造纯正的古风文学社区。
+                </p>
+            </div>
+            <div class="footer-col">
+                <h3>分类浏览</h3>
+                <ul>
+                    <li><a href="#">宫廷侯爵</a></li>
+                    <li><a href="#">江湖恩怨</a></li>
+                    <li><a href="#">穿越时空</a></li>
+                    <li><a href="#">古代言情</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>帮助中心</h3>
+                <ul>
+                    <li><a href="#">投稿指南</a></li>
+                    <li><a href="#">版权声明</a></li>
+                    <li><a href="#">用户协议</a></li>
+                    <li><a href="#">联系客服</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>关注我们</h3>
+                <p style="color: #bdc3c7; font-size: 14px;">
+                    微信公众号：风月堂文学
+                </p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 风月堂 版权所有. 保留所有权利.</p>
+        </div>
+    </footer>
+
+</body>
+  </html>
