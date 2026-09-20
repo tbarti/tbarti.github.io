@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="毒针雷萨恩 - 深度解析这位虚拟角色/职业的技能机制、实战应用及背景故事，提供全面的图鉴与攻略指南。">
+    <meta name="keywords" content="毒针雷萨恩, 游戏角色, 攻略, 图鉴, 技能">
+    <title>毒针雷萨恩-游戏角色深度图鉴与实战攻略</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #2d1b2e;
+            --accent-color: #d4af37;
+            --accent-hover: #b5952f;
+            --bg-color: #f8f6f2;
+            --card-bg: #ffffff;
+            --text-main: #1a1a1a;
+            --text-secondary: #666666;
+            --border-radius: 8px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --spacing-unit: 1rem;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Nav */
+        header {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        nav a:hover {
+            opacity: 1;
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2d1b2e 0%, #4a2c4e 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            font-weight: bold;
+            border-radius: 50px;
+            transition: transform 0.2s, background-color 0.2s;
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Layout Grid */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+            .header-inner {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+
+        /* Content Sections */
+        section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 5px solid var(--accent-color);
+            padding-left: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* Role Overview */
+        .role-overview {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+
+        .role-icon {
+            width: 120px;
+            height: 120px;
+            background-color: #f0e6d2;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            flex-shrink: 0;
+            border: 3px solid var(--accent-color);
+        }
+
+        .role-info h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .tags {
+            margin-top: 1rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background-color: #eee;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--primary-color);
+            transition: transform 0.2s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            align-items: center;
+        }
+
+        .skill-name {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .skill-type {
+            font-size: 0.8rem;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .type-atk { background-color: #ffebee; color: #c62828; }
+        .type-def { background-color: #e3f2fd; color: #1565c0; }
+        .type-skill { background-color: #f3e5f5; color: #7b1fa2; }
+
+        .skill-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Sidebar */
+        aside {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .info-box {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .info-box h4 {
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.5rem;
+        }
+
+        .stat-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed #eee;
+            font-size: 0.9rem;
+        }
+
+        .stat-list li:last-child {
+            border-bottom: none;
+        }
+
+        .stat-value {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .guide-link {
+            display: block;
+            padding: 1rem;
+            background-color: #f8f6f2;
+            border-radius: var(--border-radius);
+            margin-bottom: 1rem;
+            border: 1px solid #e0e0e0;
+            transition: border-color 0.2s;
+        }
+
+        .guide-link:hover {
+            border-color: var(--accent-color);
+        }
+
+        .guide-link h5 {
+            margin-bottom: 0.3rem;
+        }
+
+        .guide-link p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: #ccc;
+            padding: 3rem 0;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-col h5 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-col a:hover {
+            color: var(--accent-color);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.85rem;
+        }
+
+        /* Utility */
+        .text-accent { color: var(--accent-color); }
+        .mt-2 { margin-top: 1rem; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container header-inner">
+        <div class="logo">
+            <span>⚔️</span> 毒针雷萨恩
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#overview">角色概览</a></li>
+                <li><a href="#skills">技能详解</a></li>
+                <li><a href="#builds">配装推荐</a></li>
+                <li><a href="#faq">常见问题</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <h1>毒针雷萨恩</h1>
+        <p>掌握致命毒素与精密暗杀的艺术。深入解析毒针雷萨恩的技能机制、实战流派与核心玩法，助你成为战场上的致命刺客。</p>
+        <a href="#skills" class="btn">开始攻略</a>
+    </div>
+</section>
+
+<main class="container main-grid">
+    <!-- Left Column -->
+    <div class="content-col">
+        
+        <!-- Overview -->
+        <section id="overview">
+            <div class="section-title">
+                <h2>角色概览</h2>
+            </div>
+            <div class="role-overview">
+                <div class="role-icon">🗡️</div>
+                <div class="role-info">
+                    <h3>致命刺客 · 雷萨恩</h3>
+                    <p>雷萨恩是一位擅长利用化学毒素削弱敌人、进行远程精准打击的刺客型角色。他并不依赖蛮力，而是通过精准的控制和持续的毒伤，在战斗中保持绝对优势。</p>
+                    <div class="tags">
+                        <span class="tag">远程输出</span>
+                        <span class="tag">控制型</span>
+                        <span class="tag">生存能力高</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills">
+            <div class="section-title">
+                <h2>核心技能解析</h2>
+            </div>
+            <div class="skills-grid">
+                <!-- Skill 1 -->
+                <article class="skill-card">
+                    <div class="skill-header">
+                        <span class="skill-name">剧毒穿刺</span>
+                        <span class="skill-type type-atk">主动攻击</span>
+                    </div>
+                    <p class="skill-desc">向目标投掷淬毒的飞针，造成物理伤害并附加一层“剧毒”效果，每秒造成额外魔法伤害并降低目标移动速度。</p>
+                </article>
+
+                <!-- Skill 2 -->
+                <article class="skill-card">
+                    <div class="skill-header">
+                        <span class="skill-name">神经毒素</span>
+                        <span class="skill-type type-skill">控制技能</span>
+                    </div>
+                    <p class="skill-desc">向指定区域释放范围毒素，使范围内的敌人陷入“麻痹”状态，无法移动但受到的伤害增加。雷萨恩在技能范围内移动速度提升。</p>
+                </article>
+
+                <!-- Skill 3 -->
+                <article class="skill-card">
+                    <div class="skill-header">
+                        <span class="skill-name">毒云掩护</span>
+                        <span class="skill-type type-def">防御/生存</span>
+                    </div>
+                    <p class="skill-desc">在身周生成一圈持续存在的毒雾，雾气对靠近的敌人造成持续伤害并使其视野受限。雷萨恩在雾气中会获得护盾。</p>
+                </article>
+
+                <!-- Skill 4 -->
+                <article class="skill-card">
+                    <div class="skill-header">
+                        <span class="skill-name">绝命一击</span>
+                        <span class="skill-type type-atk">终极技能</span>
+                    </div>
+                    <p class="skill-desc">雷萨恩进入隐身状态，并大幅提升下一次攻击的暴击率与穿透力。如果该次攻击击杀目标，技能冷却时间重置。</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Builds -->
+        <section id="builds">
+            <div class="section-title">
+                <h2>实战配装指南</h2>
+            </div>
+            <article class="role-overview" style="flex-direction: column; align-items: stretch;">
+                <h3>推荐出装思路</h3>
+                <p>毒针雷萨恩的核心在于“持续施压”与“生存”。建议优先提升攻击速度以加快毒层的叠加，同时必须保证一定的生命值或护甲，以便在切入战场后能承受一次反扑。</p>
+                <div style="background: #f0f0f0; padding: 1rem; border-radius: 4px; margin-top: 1rem;">
+                    <strong>核心装备：</strong> 毒液匕首（增加毒伤）、幽冥斗篷（提供隐身与冷却）、迅捷之靴（提升机动性）。
+                </div>
+                <p style="margin-top: 1rem;"><strong>注意事项：</strong> 在面对拥有强力净化技能的坦克型敌人时，应减少直接硬拼，利用毒云进行消耗。</p>
+            </article>
+        </section>
+
+    </div>
+
+    <!-- Right Sidebar -->
+    <aside>
+        <div class="info-box">
+            <h4>角色属性</h4>
+            <ul class="stat-list">
+                <li><span>攻击类型</span> <span class="stat-value">远程/物理</span></li>
+                <li><span>主要属性</span> <span class="stat-value">敏捷 (AGI)</span></li>
+                <li><span>技能冷却</span> <span class="stat-value">中等</span></li>
+                <li><span>生存能力</span> <span class="stat-value">★★★☆☆</span></li>
+                <li><span>操作难度</span> <span class="stat-value">★★★★☆</span></li>
+            </ul>
+        </div>
+
+        <div class="info-box">
+            <h4>快速导航</h4>
+            <a href="#" class="guide-link">
+                <h5>新手入门教程</h5>
+                <p>了解雷萨恩的基础连招与连招顺序。</p>
+            </a>
+            <a href="#" class="guide-link">
+                <h5>PVP 对战技巧</h5>
+                <p>如何在竞技场中克制主流英雄。</p>
+            </a>
+            <a href="#" class="guide-link">
+                <h5>PVE 探索指南</h5>
+                <p>在副本中的最佳站位与输出循环。</p>
+            </a>
+        </div>
+
+        <div class="info-box" style="background-color: #fff3e0; border: 1px solid #ffe0b2;">
+            <h4>💡 玩家提示</h4>
+            <p style="font-size: 0.9rem;">“毒针雷萨恩的精髓不在于瞬间的爆发，而在于控制战场节奏。合理利用神经毒素封锁敌方走位，是胜利的关键。”</p>
+        </div>
+    </aside>
+</main>
+
+<section id="faq" style="background-color: white; padding: 3rem 0;">
+    <div class="container">
+        <div class="section-title">
+            <h2>常见问题 (FAQ)</h2>
+        </div>
+        <div style="max-width: 800px; margin: 0 auto;">
+            <details style="margin-bottom: 1rem; border-bottom: 1px solid #eee; padding-bottom: 1rem;">
+                <summary style="cursor: pointer; font-weight: bold; font-size: 1.1rem;">雷萨恩适合新手玩家吗？</summary>
+                <p style="margin-top: 0.5rem; color: var(--text-secondary);">雷萨恩的操作难度属于中等偏上。虽然技能机制相对直观，但需要良好的预判能力和走位意识才能发挥最大效果。建议先在训练营熟悉技能范围。</p>
+            </details>
+            <details style="margin-bottom: 1rem; border-bottom: 1px solid #eee; padding-bottom: 1rem;">
+                <summary style="cursor: pointer; font-weight: bold; font-size: 1.1rem;">如何应对拥有解控技能的敌人？</summary>
+                <p style="margin-top: 0.5rem; color: var(--text-secondary);">面对解控能力强的敌人，不要急于释放控制技能。可以先利用普攻叠加毒层，等待关键技能（如绝命一击）的冷却，寻找对方技能真空期进行切入。</p>
+            </details>
+            <details style="margin-bottom: 1rem; border-bottom: 1px solid #eee; padding-bottom: 1rem;">
+                <summary style="cursor: pointer; font-weight: bold; font-size: 1.1rem;">毒针雷萨恩在团战中的定位是什么？</summary>
+                <p style="margin-top: 0.5rem; color: var(--text-secondary);">团战中，雷萨恩应优先攻击敌方后排脆皮或控制型英雄。利用毒云掩护切入，使用神经毒素限制敌方走位，为队友创造输出环境。</p>
+            </details>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-col">
+                <h5>关于毒针雷萨恩</h5>
+                <p style="font-size: 0.9rem; line-height: 1.6;">本页面提供关于虚拟角色“毒针雷萨恩”的详细攻略、技能介绍与游戏建议。内容仅供参考，旨在帮助玩家更好地理解角色机制。</p>
+            </div>
+            <div class="footer-col">
+                <h5>快速链接</h5>
+                <ul>
+                    <li><a href="#">返回首页</a></li>
+                    <li><a href="#">角色图鉴</a></li>
+                    <li><a href="#">装备大全</a></li>
+                    <li><a href="#">社区论坛</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>联系我们</h5>
+                <ul>
+                    <li><a href="#">提交Bug</a></li>
+                    <li><a href="#">建议反馈</a></li>
+                    <li><a href="#">合作洽谈</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 毒针雷萨恩攻略站. All rights reserved. 本站内容为原创攻略整理。</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
